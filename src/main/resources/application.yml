@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: masterpiece
+
+  datasource:
+    url: ENC(Xd5mQjC9TCSy8Apvp15UDQiUgVea67AIgRDhPQX8tsoedYLp5oyIun5hLRKWqBS6dOXGR1SutCYFVw/irGcwnbdlV/Hqfc2AKfiTgYodkUtP1e+lpfWc+zmwQoMTI6BHHxVoVlzlpPc1CMJP3QuhgCzMhfonCXvtpxVnWyQThmAyi3+F8eEV7UZkVuRzwtYA)
+    username: ENC(bUruUSEIcwDLuiPzZZ4a2SLmRi7p36uUsv3Ox/mMbeBsxAXAjvilkcsAxsWOWTaK)
+    password: ENC(6U7YeKSMf7cPIbtVT9w3qNSIXc4GVI3YLuTP6L00S5078XWwxmo+n+hxIleHdbEz)
+
+  flyway:
+    enabled: true
