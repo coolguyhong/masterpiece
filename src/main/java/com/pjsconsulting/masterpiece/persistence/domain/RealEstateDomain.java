@@ -1,5 +1,10 @@
 package com.pjsconsulting.masterpiece.persistence.domain;
 
+import lombok.Data;
+
+import java.time.ZonedDateTime;
+
+@Data
 public class RealEstateDomain {
 
     private String id;
@@ -39,4 +44,13 @@ public class RealEstateDomain {
     private String housingRentalStartDt;
 
     private String housingRentalDutyEndDt;
+
+    private String createdBy;
+
+    private ZonedDateTime createdDt;
+
+    private String modifiedBy;
+
+    private ZonedDateTime modifiedDt;
+
 }
