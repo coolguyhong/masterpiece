@@ -9,3 +9,6 @@ spring:
 
   flyway:
     enabled: true
+
+mybatis:
+  mapper-locations: classpath:sql/mapper-*.xml

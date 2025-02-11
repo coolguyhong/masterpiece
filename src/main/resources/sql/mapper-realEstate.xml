@@ -2,14 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pjsconsulting.masterpiece.persistence.mapper.RealEstateMapper">
     <insert id="insertRealEstate" parameterType="com.pjsconsulting.masterpiece.persistence.domain.RealEstateDomain">
-        insert into real_estate (id, owner_name, road_address, parcel_address, postcode, building_name, detail_address,
-                                 supply_area, exclusive_area, purchase_date, purchase_price, kb_market_price,
-                                 tech_market_price, public_market_price, housing_rental_business_yn, housing_rental_type,
-                                 housing_rental_start_dt, housing_rental_duty_end_dt, created_by, created_dt,
-                                 modified_by, modified_dt)
-        values (#{id}, #{owner_name}, #{road_address}, #{parcel_address}, #{postcode}, #{building_name}, #{detail_address},
-                #{supply_area}, #{exclusive_area}, #{purchase_date}, #{purchase_price}, #{kb_market_price}, #{tech_market_price},
-                #{housing_rental_business_yn}, #{housing_rental_type}, #{housing_rental_start_dt}, #{housing_rental_duty_end_dt},
-                #{housing_rental_duty_end_dt}, #{created_by}, current_timestamp, #{modified_by}, current_timestamp)
+        insert into real_estate (id, owner_name, road_address, parcel_address, postcode, building_name,
+                                 detail_address, supply_area, exclusive_area, purchase_date, purchase_price,
+                                 kb_market_price, tech_market_price, public_market_price, housing_rental_business_yn,
+                                 housing_rental_type, housing_rental_start_dt, housing_rental_duty_end_dt,
+                                 created_by, created_dt, modified_by, modified_dt)
+        values (#{id}, #{ownerName}, #{roadAddress}, #{parcelAddress}, #{postcode}, #{buildingName},
+                #{detailAddress}, #{supplyArea}, #{exclusiveArea}, #{purchaseDate}, #{purchasePrice},
+                #{kbMarketPrice}, #{techMarketPrice}, #{publicMarketPrice}, #{housingRentalBusinessYn},
+                #{housingRentalType}, #{housingRentalStartDt}, #{housingRentalDutyEndDt},
+                #{createdBy}, current_timestamp, #{modifiedBy}, current_timestamp)
     </insert>
 </mapper>

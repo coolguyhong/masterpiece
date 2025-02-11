@@ -1,9 +1,9 @@
 package com.pjsconsulting.masterpiece.presentation.vo.response;
 
-import java.io.Serial;
-import java.io.Serializable;
+import lombok.Getter;
 
-public class CommonResponse implements Serializable {
+@Getter
+public class CommonResponse {
 
     private final String id;
 

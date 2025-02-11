@@ -15,4 +15,9 @@ public interface RealEstateMapStructMapper {
     RealEstateCreateDTO createReqDTOToCreateDTO(RealEstateCreateReqDTO realEstateCreateReqDTO);
 
     RealEstateDomain createDTOToDomain(RealEstateCreateDTO realEstateCreateDTO);
+
+    @AfterMapping
+    default void createDTOToDomain(RealEstateCreateDTO realEstateCreateDTO, @MappingTarget RealEstateDomain realEstateDomain) {
+        realEstateDomain.setHousingRentalBusinessYn(realEstateCreateDTO.isHousingRentalBusiness() ? "Y" : "N");
+    }
 }

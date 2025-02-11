@@ -10,7 +10,7 @@ public class RealEstateCreateRequest {
 
     @NotBlank(message = "소유주는 필수값 입니다.")
     @Size(min = 1, max = 10, message="소유주는 최소 1자리 이상 최대 10자리 이하이어야 합니다.")
-    @Pattern(regexp = "[가-힣]*$", message = "한글만 입력할 수 있습니다.")
+    @Pattern(regexp = "^[가-힣]*$", message = "한글만 입력할 수 있습니다.")
     private String ownerName;
 
     @NotBlank(message = "도로명 주소는 필수값 입니다.")
@@ -20,7 +20,7 @@ public class RealEstateCreateRequest {
     private String parcelAddress;
 
     @NotBlank(message = "우편번호는 필수값 입니다.")
-//    @Pattern(regexp = "[0-9]$", message = "숫자만 입력할 수 있습니다.")
+    @Pattern(regexp = "^[0-9]{5}$", message = "5자리 숫자만 입력할 수 있습니다.")
     private String postcode;
 
     @NotBlank(message = "물건명 필수값 입니다.")
@@ -28,7 +28,7 @@ public class RealEstateCreateRequest {
 
     @NotBlank(message = "상세 주소는 필수값 입니다.")
     @Size(min = 1, max = 30, message="상세 주소는 최소 1자리 이상 최대 30자리 이하이어야 합니다.")
-//    @Pattern(regexp = "[가-힣a-zA-Z0-9\s`~!@#$%^&*()_=+|{};:,.-/?]$", message = "허용되지 않는 문자가 있습니다.")
+    @Pattern(regexp = "^[가-힣a-zA-Z0-9\\s~&()_-]*$", message = "허용되지 않는 문자가 있습니다.")
     private String detailAddress;
 
     @NotBlank(message = "물건 유형은 필수값 입니다.")

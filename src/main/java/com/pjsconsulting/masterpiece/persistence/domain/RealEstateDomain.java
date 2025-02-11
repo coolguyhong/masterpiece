@@ -37,7 +37,7 @@ public class RealEstateDomain {
 
     private long publicMarketPrice;
 
-    private boolean isHousingRentalBusiness;
+    private String housingRentalBusinessYn;
 
     private String housingRentalType;
 
