@@ -37,6 +37,12 @@ public class RealEstateCreateDTO {
 
     private long publicMarketPrice;
 
+    private String rentalType;
+
+    private long deposit;
+
+    private long monthlyRent;
+
     private boolean isHousingRentalBusiness;
 
     private String housingRentalType;

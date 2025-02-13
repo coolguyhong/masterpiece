@@ -50,6 +50,13 @@ public class RealEstateCreateRequest {
 
     private long publicMarketPrice;
 
+    @NotBlank(message = "임대유형은 필수값 입니다.")
+    private String rentalType;
+
+    private long deposit;
+
+    private long monthlyRent;
+
     private boolean isHousingRentalBusiness;
 
     private String housingRentalType;

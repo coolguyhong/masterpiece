@@ -4,13 +4,15 @@
     <insert id="insertRealEstate" parameterType="com.pjsconsulting.masterpiece.persistence.domain.RealEstateDomain">
         insert into real_estate (id, owner_name, road_address, parcel_address, postcode, building_name,
                                  detail_address, supply_area, exclusive_area, purchase_date, purchase_price,
-                                 kb_market_price, tech_market_price, public_market_price, housing_rental_business_yn,
-                                 housing_rental_type, housing_rental_start_dt, housing_rental_duty_end_dt,
+                                 kb_market_price, tech_market_price, public_market_price, rental_type,
+                                 deposit, monthly_rent, housing_rental_business_yn, housing_rental_type,
+                                 housing_rental_start_dt, housing_rental_duty_end_dt,
                                  created_by, created_dt, modified_by, modified_dt)
         values (#{id}, #{ownerName}, #{roadAddress}, #{parcelAddress}, #{postcode}, #{buildingName},
                 #{detailAddress}, #{supplyArea}, #{exclusiveArea}, #{purchaseDate}, #{purchasePrice},
-                #{kbMarketPrice}, #{techMarketPrice}, #{publicMarketPrice}, #{housingRentalBusinessYn},
-                #{housingRentalType}, #{housingRentalStartDt}, #{housingRentalDutyEndDt},
+                #{kbMarketPrice}, #{techMarketPrice}, #{publicMarketPrice}, #{rentalType},
+                #{deposit}, #{monthlyRent}, #{housingRentalBusinessYn}, #{housingRentalType},
+                #{housingRentalStartDt}, #{housingRentalDutyEndDt},
                 #{createdBy}, current_timestamp, #{modifiedBy}, current_timestamp)
     </insert>
 </mapper>

@@ -37,6 +37,12 @@ public class RealEstateDomain {
 
     private long publicMarketPrice;
 
+    private String rentalType;
+
+    private long deposit;
+
+    private long monthlyRent;
+
     private String housingRentalBusinessYn;
 
     private String housingRentalType;
