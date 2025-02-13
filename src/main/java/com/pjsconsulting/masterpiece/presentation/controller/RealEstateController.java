@@ -1,16 +1,17 @@
 package com.pjsconsulting.masterpiece.presentation.controller;
 
 import com.pjsconsulting.masterpiece.mapstruct.RealEstateMapStructMapper;
+import com.pjsconsulting.masterpiece.presentation.vo.condition.RealEstateSearchCondition;
 import com.pjsconsulting.masterpiece.presentation.vo.request.RealEstateCreateRequest;
 import com.pjsconsulting.masterpiece.presentation.vo.response.CommonResponse;
+import com.pjsconsulting.masterpiece.presentation.vo.response.PageResponse;
+import com.pjsconsulting.masterpiece.presentation.vo.response.RealEstatesResponse;
+import com.pjsconsulting.masterpiece.service.dto.condition.RealEstateSearchDTO;
 import com.pjsconsulting.masterpiece.service.dto.request.RealEstateCreateReqDTO;
 import com.pjsconsulting.masterpiece.service.logic.RealEstateService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -31,5 +32,14 @@ public class RealEstateController {
         RealEstateCreateReqDTO realEstateCreateReqDTO = realEstateMapStructMapper.createRequestToCreateReqDTO(realEstateCreateRequest);
         final String id = realEstateService.createRealEstate(realEstateCreateReqDTO);
         return new CommonResponse(id);
+    }
+
+    @GetMapping
+    public PageResponse<RealEstatesResponse> listRealEstate(@Valid RealEstateSearchCondition realEstateSearchCondition) {
+        RealEstateSearchDTO realEstateSearchDTO = realEstateMapStructMapper.searchConditionToSearchDTO(realEstateSearchCondition);
+
+
+
+        return null;
     }
 }

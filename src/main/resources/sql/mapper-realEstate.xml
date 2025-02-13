@@ -3,16 +3,52 @@
 <mapper namespace="com.pjsconsulting.masterpiece.persistence.mapper.RealEstateMapper">
     <insert id="insertRealEstate" parameterType="com.pjsconsulting.masterpiece.persistence.domain.RealEstateDomain">
         insert into real_estate (id, owner_name, road_address, parcel_address, postcode, building_name,
-                                 detail_address, supply_area, exclusive_area, purchase_date, purchase_price,
-                                 kb_market_price, tech_market_price, public_market_price, rental_type,
-                                 deposit, monthly_rent, housing_rental_business_yn, housing_rental_type,
-                                 housing_rental_start_dt, housing_rental_duty_end_dt,
+                                 building_type, detail_address, supply_area, exclusive_area, purchase_date,
+                                 purchase_price, kb_market_price, tech_market_price, public_market_price,
+                                 rental_type, deposit, monthly_rent, housing_rental_business_yn,
+                                 housing_rental_type, housing_rental_start_dt, housing_rental_duty_end_dt,
                                  created_by, created_dt, modified_by, modified_dt)
         values (#{id}, #{ownerName}, #{roadAddress}, #{parcelAddress}, #{postcode}, #{buildingName},
-                #{detailAddress}, #{supplyArea}, #{exclusiveArea}, #{purchaseDate}, #{purchasePrice},
-                #{kbMarketPrice}, #{techMarketPrice}, #{publicMarketPrice}, #{rentalType},
-                #{deposit}, #{monthlyRent}, #{housingRentalBusinessYn}, #{housingRentalType},
-                #{housingRentalStartDt}, #{housingRentalDutyEndDt},
+                #{buildingType}, #{supplyArea}, #{exclusiveArea}, #{purchaseDate},
+                #{purchasePrice}, #{kbMarketPrice}, #{techMarketPrice}, #{publicMarketPrice},
+                #{rentalType}, #{deposit}, #{monthlyRent}, #{housingRentalBusinessYn},
+                #{housingRentalType}, #{housingRentalStartDt}, #{housingRentalDutyEndDt},
                 #{createdBy}, current_timestamp, #{modifiedBy}, current_timestamp)
     </insert>
+
+    <select id="selectRealEstateList"
+            parameterType="com.pjsconsulting.masterpiece.service.dto.condition.RealEstateSearchDTO"
+            resultType="com.pjsconsulting.masterpiece.persistence.domain.RealEstateDomain">
+        select  id,
+                owner_name,
+                road_address,
+                building_name,
+                detail_address,
+                building_type,
+                rental_type,
+                deposit,
+                monthly_rent,
+                housing_rental_business_yn,
+                created_by,
+                created_dt,
+                modified_by,
+                modified_dt
+        from    real_estate
+        where   1=1
+        <if test="ownerName != null and ownerName != ''">
+            and owner_name like '%' || #{ownerName} || '%'
+        </if>
+        <if test="buildingName != null and buildingName != ''">
+            and building_name like '%' || #{buildingName} || '%'
+        </if>
+        <if test="detailAddress != null and detailAddress != ''">
+            and detail_address like '%' || #{detailAddress} || '%'
+        </if>
+        <if test="contractEndDtFrom != null and contractEndDtFrom != ''
+                and contractEndDtTo != null and contractEndDtTo != ''">
+
+        </if>
+
+
+    </select>
 </mapper>

@@ -22,6 +22,7 @@ create table real_estate (
     postcode varchar(10) not null,
     building_name varchar(40) not null,
     detail_address varchar(100) not null,
+    building_type varchar(10) not null,
     supply_area decimal(8,4) not null,
     exclusive_area decimal(8,4) not null,
     purchase_date date not null,

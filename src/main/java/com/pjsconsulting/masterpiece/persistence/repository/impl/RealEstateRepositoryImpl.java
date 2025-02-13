@@ -2,10 +2,14 @@ package com.pjsconsulting.masterpiece.persistence.repository.impl;
 
 import com.pjsconsulting.masterpiece.mapstruct.RealEstateMapStructMapper;
 import com.pjsconsulting.masterpiece.persistence.domain.RealEstateDomain;
+import com.pjsconsulting.masterpiece.persistence.dto.RealEstateDTO;
 import com.pjsconsulting.masterpiece.persistence.mapper.RealEstateMapper;
 import com.pjsconsulting.masterpiece.persistence.repository.RealEstateRepository;
 import com.pjsconsulting.masterpiece.service.dto.RealEstateCreateDTO;
+import com.pjsconsulting.masterpiece.service.dto.condition.RealEstateSearchDTO;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class RealEstateRepositoryImpl implements RealEstateRepository {
@@ -23,5 +27,16 @@ public class RealEstateRepositoryImpl implements RealEstateRepository {
     public void insertRealEstate(RealEstateCreateDTO realEstateCreateDTO) {
         RealEstateDomain realEstateDomain = realEstateMapStructMapper.createDTOToDomain(realEstateCreateDTO);
         realEstateMapper.insertRealEstate(realEstateDomain);
+    }
+
+    @Override
+    public List<RealEstateDTO> selectRealEstateList(RealEstateSearchDTO realEstateSearchDTO) {
+
+        return List.of();
+    }
+
+    @Override
+    public int selectRealEstateListCount(RealEstateSearchDTO realEstateSearchDTO) {
+        return 0;
     }
 }

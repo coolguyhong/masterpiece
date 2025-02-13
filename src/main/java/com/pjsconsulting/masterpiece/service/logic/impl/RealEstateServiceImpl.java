@@ -3,10 +3,14 @@ package com.pjsconsulting.masterpiece.service.logic.impl;
 import com.pjsconsulting.masterpiece.mapstruct.RealEstateMapStructMapper;
 import com.pjsconsulting.masterpiece.persistence.repository.RealEstateRepository;
 import com.pjsconsulting.masterpiece.service.dto.RealEstateCreateDTO;
+import com.pjsconsulting.masterpiece.service.dto.condition.RealEstateSearchDTO;
 import com.pjsconsulting.masterpiece.service.dto.request.RealEstateCreateReqDTO;
+import com.pjsconsulting.masterpiece.service.dto.response.RealEstateResDTO;
 import com.pjsconsulting.masterpiece.service.logic.RealEstateService;
 import com.pjsconsulting.masterpiece.util.UuidUtil;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class RealEstateServiceImpl implements RealEstateService {
@@ -29,5 +33,16 @@ public class RealEstateServiceImpl implements RealEstateService {
         realEstateRepository.insertRealEstate(realEstateCreateDTO);
 
         return id;
+    }
+
+    @Override
+    public List<RealEstateResDTO> listRealEstate(RealEstateSearchDTO realEstateSearchDTO) {
+
+        return List.of();
+    }
+
+    @Override
+    public int listRealEstateCount(RealEstateSearchDTO realEstateSearchDTO) {
+        return 0;
     }
 }
