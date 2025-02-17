@@ -3,16 +3,16 @@
 <mapper namespace="com.pjsconsulting.masterpiece.persistence.mapper.RealEstateMapper">
     <insert id="insertRealEstate" parameterType="com.pjsconsulting.masterpiece.persistence.domain.RealEstateDomain">
         insert into real_estate (id, owner_name, road_address, parcel_address, postcode, building_name,
-                                 building_type, detail_address, supply_area, exclusive_area, purchase_date,
+                                 detail_address, building_type, supply_area, exclusive_area, purchase_date,
                                  purchase_price, kb_market_price, tech_market_price, public_market_price,
-                                 rental_type, deposit, monthly_rent, housing_rental_business_yn,
-                                 housing_rental_type, housing_rental_start_dt, housing_rental_duty_end_dt,
+                                 rental_type, deposit, monthly_rent, contract_start_date, contract_end_date,
+                                 housing_rental_business_yn, housing_rental_type, housing_rental_start_date, housing_rental_duty_end_date,
                                  created_by, created_dt, modified_by, modified_dt)
         values (#{id}, #{ownerName}, #{roadAddress}, #{parcelAddress}, #{postcode}, #{buildingName},
-                #{buildingType}, #{supplyArea}, #{exclusiveArea}, #{purchaseDate},
+                #{detailAddress}, #{buildingType}, #{supplyArea}, #{exclusiveArea}, #{purchaseDate},
                 #{purchasePrice}, #{kbMarketPrice}, #{techMarketPrice}, #{publicMarketPrice},
-                #{rentalType}, #{deposit}, #{monthlyRent}, #{housingRentalBusinessYn},
-                #{housingRentalType}, #{housingRentalStartDt}, #{housingRentalDutyEndDt},
+                #{rentalType}, #{deposit}, #{monthlyRent}, #{contractStartDate}, #{contractEndDate},
+                #{housingRentalBusinessYn}, #{housingRentalType}, #{housingRentalStartDate}, #{housingRentalDutyEndDate},
                 #{createdBy}, current_timestamp, #{modifiedBy}, current_timestamp)
     </insert>
 
@@ -20,35 +20,79 @@
             parameterType="com.pjsconsulting.masterpiece.service.dto.condition.RealEstateSearchDTO"
             resultType="com.pjsconsulting.masterpiece.persistence.domain.RealEstateDomain">
         select  id,
-                owner_name,
-                road_address,
-                building_name,
-                detail_address,
-                building_type,
-                rental_type,
-                deposit,
-                monthly_rent,
-                housing_rental_business_yn,
-                created_by,
-                created_dt,
-                modified_by,
-                modified_dt
+        owner_name,
+        road_address,
+        building_name,
+        detail_address,
+        building_type,
+        rental_type,
+        deposit,
+        monthly_rent,
+        contract_start_date,
+        contract_end_date,
+        housing_rental_business_yn,
+        created_by,
+        created_dt,
+        modified_by,
+        modified_dt
         from    real_estate
         where   1=1
         <if test="ownerName != null and ownerName != ''">
-            and owner_name like '%' || #{ownerName} || '%'
+            and owner_name like concat('%',#{ownerName},'%')
         </if>
         <if test="buildingName != null and buildingName != ''">
-            and building_name like '%' || #{buildingName} || '%'
+            and building_name like concat('%',#{buildingName},'%')
         </if>
         <if test="detailAddress != null and detailAddress != ''">
-            and detail_address like '%' || #{detailAddress} || '%'
+            and detail_address like concat('%',#{detailAddress},'%')
         </if>
-        <if test="contractEndDtFrom != null and contractEndDtFrom != ''
-                and contractEndDtTo != null and contractEndDtTo != ''">
-
+        <if test="buildingType != null and buildingType != ''">
+            and building_type = #{buildingType}
         </if>
+        <if test="contractEndDateFrom != null and contractEndDateFrom != ''
+                and contractEndDateTo != null and contractEndDateTo != ''">
+            and contract_end_date between #{contractEndDateFrom} and #{contractEndDateTo}
+        </if>
+        order by
+        <choose>
+            <when test="sortKey == 'contractStartDate'">contract_start_date<include refid="sortOrderSql"/></when>
+            <otherwise>
+                contract_end_date<include refid="sortOrderSql"/>
+            </otherwise>
+        </choose>
+        limit #{page}, #{size}
+    </select>
 
+    <sql id="sortOrderSql">
+        <trim prefix=" ">
+            <choose>
+                <when test="'desc'.equalsIgnoreCase(sortOrder)">desc</when>
+                <otherwise>asc</otherwise>
+            </choose>
+        </trim>
+    </sql>
 
+    <select id="selectRealEstateListCount"
+            parameterType="com.pjsconsulting.masterpiece.service.dto.condition.RealEstateSearchDTO"
+            resultType="Integer">
+        select  count(id)
+        from    real_estate
+        where   1=1
+        <if test="ownerName != null and ownerName != ''">
+            and owner_name like concat('%',#{ownerName},'%')
+        </if>
+        <if test="buildingName != null and buildingName != ''">
+            and building_name like concat('%',#{buildingName},'%')
+        </if>
+        <if test="detailAddress != null and detailAddress != ''">
+            and detail_address like concat('%',#{detailAddress},'%')
+        </if>
+        <if test="buildingType != null and buildingType != ''">
+            and building_type = #{buildingType}
+        </if>
+        <if test="contractEndDateFrom != null and contractEndDateFrom != ''
+                and contractEndDateTo != null and contractEndDateTo != ''">
+            and contract_end_date between #{contractEndDateFrom} and #{contractEndDateTo}
+        </if>
     </select>
 </mapper>

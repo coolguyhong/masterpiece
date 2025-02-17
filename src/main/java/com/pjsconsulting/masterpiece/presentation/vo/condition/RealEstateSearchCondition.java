@@ -1,5 +1,6 @@
 package com.pjsconsulting.masterpiece.presentation.vo.condition;
 
+import jakarta.validation.constraints.Pattern;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -13,9 +14,11 @@ public class RealEstateSearchCondition extends SearchCondition {
 
     private final String detailAddress;
 
-    private final String contractEndDtFrom;
+    @Pattern(regexp = "^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$", message = "yyyy-MM-dd 형식이어야 합니다.")
+    private final String contractEndDateFrom;
 
-    private final String contractEndDtTo;
+    @Pattern(regexp = "^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$", message = "yyyy-MM-dd 형식이어야 합니다.")
+    private final String contractEndDateTo;
 
     private final String ownerName;
 

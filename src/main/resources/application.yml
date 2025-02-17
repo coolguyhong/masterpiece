@@ -3,7 +3,8 @@ spring:
     name: masterpiece
 
   datasource:
-    url: ENC(Xd5mQjC9TCSy8Apvp15UDQiUgVea67AIgRDhPQX8tsoedYLp5oyIun5hLRKWqBS6dOXGR1SutCYFVw/irGcwnbdlV/Hqfc2AKfiTgYodkUtP1e+lpfWc+zmwQoMTI6BHHxVoVlzlpPc1CMJP3QuhgCzMhfonCXvtpxVnWyQThmAyi3+F8eEV7UZkVuRzwtYA)
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: ENC(hKoDD/U3/PLxP6O4QPD0y0BeEDgK62Z88iCmv8D0spM1SK8NLagLIh5AaIF1iTX442zCjcsHt/aJWtR0qqS5p8G01/v1N9LvVhJOaKNtvMkr6Zie6t2klz6DpY5k1jCHQQ6HNydhblbIze5NoN+tEK007gzcRLfTDLT7HUOTj32pA/xXbcT5I2ekdSPt06LU)
     username: ENC(bUruUSEIcwDLuiPzZZ4a2SLmRi7p36uUsv3Ox/mMbeBsxAXAjvilkcsAxsWOWTaK)
     password: ENC(6U7YeKSMf7cPIbtVT9w3qNSIXc4GVI3YLuTP6L00S5078XWwxmo+n+hxIleHdbEz)
 
@@ -12,3 +13,21 @@ spring:
 
 mybatis:
   mapper-locations: classpath:sql/mapper-*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  module: ${spring.application.name}
+  pattern:
+    console: "%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5p %c{1.} %x - %m%n"
+  level:
+    ROOT: info
+    com.pjsconsulting.masterpiece: debug
+    org.springframework: info
+    org.apache: info
+    jdbc.sqlonly: info
+    jdbc.sqltiming: warn
+    jdbc.audit: warn
+    jdbc.resultset: warn
+    jdbc.resultsettable: info
+    jdbc.connection: info

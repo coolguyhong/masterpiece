@@ -8,10 +8,13 @@ import com.pjsconsulting.masterpiece.presentation.vo.response.PageResponse;
 import com.pjsconsulting.masterpiece.presentation.vo.response.RealEstatesResponse;
 import com.pjsconsulting.masterpiece.service.dto.condition.RealEstateSearchDTO;
 import com.pjsconsulting.masterpiece.service.dto.request.RealEstateCreateReqDTO;
+import com.pjsconsulting.masterpiece.service.dto.response.RealEstateResDTO;
 import com.pjsconsulting.masterpiece.service.logic.RealEstateService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -38,8 +41,11 @@ public class RealEstateController {
     public PageResponse<RealEstatesResponse> listRealEstate(@Valid RealEstateSearchCondition realEstateSearchCondition) {
         RealEstateSearchDTO realEstateSearchDTO = realEstateMapStructMapper.searchConditionToSearchDTO(realEstateSearchCondition);
 
+        List<RealEstateResDTO> realEstateResDTOList = realEstateService.listRealEstate(realEstateSearchDTO);
+        List<RealEstatesResponse> realEstatesResponseList = realEstateMapStructMapper.resDTOListToResponseList(realEstateResDTOList);
 
+        int totalCount = realEstateService.listRealEstateCount(realEstateSearchDTO);
 
-        return null;
+        return new PageResponse<>(totalCount, realEstatesResponseList);
     }
 }

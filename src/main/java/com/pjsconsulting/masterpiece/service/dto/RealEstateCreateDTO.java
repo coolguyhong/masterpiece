@@ -43,12 +43,16 @@ public class RealEstateCreateDTO {
 
     private long monthlyRent;
 
+    private String contractStartDate;
+
+    private String contractEndDate;
+
     private boolean isHousingRentalBusiness;
 
     private String housingRentalType;
 
-    private String housingRentalStartDt;
+    private String housingRentalStartDate;
 
-    private String housingRentalDutyEndDt;
+    private String housingRentalDutyEndDate;
 
 }

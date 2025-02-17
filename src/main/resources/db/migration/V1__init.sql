@@ -33,6 +33,8 @@ create table real_estate (
     rental_type varchar(10) not null,
     deposit bigint not null,
     monthly_rent bigint,
+    contract_start_date date not null,
+    contract_end_date date not null,
     housing_rental_business_yn char(1) not null,
     housing_rental_type varchar(20),
     housing_rental_start_dt date,

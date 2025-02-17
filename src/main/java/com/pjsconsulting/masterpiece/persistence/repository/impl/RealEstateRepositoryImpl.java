@@ -31,12 +31,13 @@ public class RealEstateRepositoryImpl implements RealEstateRepository {
 
     @Override
     public List<RealEstateDTO> selectRealEstateList(RealEstateSearchDTO realEstateSearchDTO) {
+        List<RealEstateDomain> realEstateDomainList = realEstateMapper.selectRealEstateList(realEstateSearchDTO);
 
-        return List.of();
+        return realEstateMapStructMapper.domainListToDTOList(realEstateDomainList);
     }
 
     @Override
     public int selectRealEstateListCount(RealEstateSearchDTO realEstateSearchDTO) {
-        return 0;
+        return realEstateMapper.selectRealEstateListCount(realEstateSearchDTO);
     }
 }

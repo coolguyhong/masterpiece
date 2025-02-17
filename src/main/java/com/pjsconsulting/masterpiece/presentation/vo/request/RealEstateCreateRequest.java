@@ -38,7 +38,7 @@ public class RealEstateCreateRequest {
 
     private double exclusiveArea;
 
-    @NotBlank(message = "매수일 필수값 입니다.")
+    @NotBlank(message = "매수일은 필수값 입니다.")
     @Pattern(regexp = "^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$", message = "yyyy-MM-dd 형식이어야 합니다.")
     private String purchaseDate;
 
@@ -57,14 +57,22 @@ public class RealEstateCreateRequest {
 
     private long monthlyRent;
 
+    @NotBlank(message = "계약시작일은 필수값 입니다.")
+    @Pattern(regexp = "^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$", message = "yyyy-MM-dd 형식이어야 합니다.")
+    private String contractStartDate;
+
+    @NotBlank(message = "계약종료일 필수값 입니다.")
+    @Pattern(regexp = "^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$", message = "yyyy-MM-dd 형식이어야 합니다.")
+    private String contractEndDate;
+
     private boolean isHousingRentalBusiness;
 
     private String housingRentalType;
 
     @Pattern(regexp = "^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$", message = "yyyy-MM-dd 형식이어야 합니다.")
-    private String housingRentalStartDt;
+    private String housingRentalStartDate;
 
     @Pattern(regexp = "^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$", message = "yyyy-MM-dd 형식이어야 합니다.")
-    private String housingRentalDutyEndDt;
+    private String housingRentalDutyEndDate;
 
 }

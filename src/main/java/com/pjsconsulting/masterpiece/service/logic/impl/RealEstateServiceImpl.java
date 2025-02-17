@@ -1,6 +1,7 @@
 package com.pjsconsulting.masterpiece.service.logic.impl;
 
 import com.pjsconsulting.masterpiece.mapstruct.RealEstateMapStructMapper;
+import com.pjsconsulting.masterpiece.persistence.dto.RealEstateDTO;
 import com.pjsconsulting.masterpiece.persistence.repository.RealEstateRepository;
 import com.pjsconsulting.masterpiece.service.dto.RealEstateCreateDTO;
 import com.pjsconsulting.masterpiece.service.dto.condition.RealEstateSearchDTO;
@@ -37,12 +38,13 @@ public class RealEstateServiceImpl implements RealEstateService {
 
     @Override
     public List<RealEstateResDTO> listRealEstate(RealEstateSearchDTO realEstateSearchDTO) {
-
-        return List.of();
+        List<RealEstateDTO> realEstateDTOList = realEstateRepository.selectRealEstateList(realEstateSearchDTO);
+        return realEstateMapStructMapper.dtoListToResDTOList(realEstateDTOList);
     }
 
     @Override
     public int listRealEstateCount(RealEstateSearchDTO realEstateSearchDTO) {
-        return 0;
+        return realEstateRepository.selectRealEstateListCount(realEstateSearchDTO);
     }
+
 }

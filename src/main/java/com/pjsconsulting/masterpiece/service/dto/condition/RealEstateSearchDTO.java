@@ -11,9 +11,9 @@ public class RealEstateSearchDTO extends SearchDTO {
 
     private String detailAddress;
 
-    private String contractEndDtFrom;
+    private String contractEndDateFrom;
 
-    private String contractEndDtTo;
+    private String contractEndDateTo;
 
     private String ownerName;
 

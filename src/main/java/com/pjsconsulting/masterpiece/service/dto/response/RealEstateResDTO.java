@@ -27,6 +27,10 @@ public class RealEstateResDTO {
 
     private long monthlyRent;
 
+    private String contractStartDate;
+
+    private String contractEndDate;
+
     private String createdBy;
 
     private ZonedDateTime createdDt;
