@@ -31,6 +31,11 @@ public class RealEstateServiceImpl implements RealEstateService {
         final String id = UuidUtil.generateId("REAL-ESTATE");
         realEstateCreateDTO.setId(id);
 
+        if (!realEstateCreateReqDTO.isHousingRentalBusiness()) {
+            realEstateCreateDTO.setHousingRentalStartDate(null);
+            realEstateCreateDTO.setHousingRentalDutyEndDate(null);
+        }
+
         realEstateRepository.insertRealEstate(realEstateCreateDTO);
 
         return id;
